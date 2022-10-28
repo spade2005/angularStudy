@@ -25,3 +25,17 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+
+#### ng script
+- create component
+- ng generate component xxx
+- create service
+- ng generate service xxx
+- create module.(this for routing)
+- ng generate module app-routing --flat --module=app
+- ng generate module admin --routing (admin module )
+- create guard (路由守卫)
+- ng generate guard your-guard
+
+
