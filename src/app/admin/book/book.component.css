@@ -1,0 +1,19 @@
+
+.book-div {
+  width: 80%;
+  margin: 2rem auto 0;
+  padding:2rem;
+}
+.book-box{
+  border:1px solid #ece8e8;
+  text-align: center;
+  line-height: 80px;
+  width: 95%;
+  height: 80%;
+}
+.book-box:hover{
+  background: #ece8e8;
+}
+.mat-grid-tile a{
+  text-decoration: none;
+}

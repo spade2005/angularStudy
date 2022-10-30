@@ -8,6 +8,8 @@ import {AuthService} from "../../guard/auth.service";
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+
+  user = {username: '', password: ''};
   message: string;
 
   constructor(public authService: AuthService, public router: Router) {

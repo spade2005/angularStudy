@@ -1,6 +1,27 @@
+<div class="login-div">
 <h2>Login</h2>
 <p>{{message}}</p>
+
+
+<div *ngIf="!authService.isLoggedIn">
+  <p>
+    <mat-form-field appearance="fill">
+      <mat-label>UserName</mat-label>
+      <input matInput placeholder="Please enter userName" [(ngModel)]="user.username">
+    </mat-form-field>
+  </p>
+  <p>
+    <mat-form-field appearance="fill">
+      <mat-label>UserPass</mat-label>
+      <input matInput placeholder="Please enter userPass" type="password" [(ngModel)]="user.password">
+    </mat-form-field>
+  </p>
+</div>
+
+
 <p>
-  <button type="button" (click)="login()"  *ngIf="!authService.isLoggedIn">Login</button>
-  <button type="button" (click)="logout()" *ngIf="authService.isLoggedIn">Logout</button>
+  <button mat-raised-button type="button" (click)="login()"  *ngIf="!authService.isLoggedIn">Login</button>
+  <button mat-raised-button type="button" (click)="logout()" *ngIf="authService.isLoggedIn">Logout</button>
 </p>
+
+</div>
