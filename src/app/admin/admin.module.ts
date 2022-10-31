@@ -11,6 +11,10 @@ import {MatIconModule} from "@angular/material/icon";
 import {MatMenuModule} from "@angular/material/menu";
 import {MatGridListModule} from "@angular/material/grid-list";
 import {MatRippleModule} from "@angular/material/core";
+import { BookCreateComponent } from './book-create/book-create.component';
+import { BookUpdateComponent } from './book-update/book-update.component';
+import {MatTooltipModule} from "@angular/material/tooltip";
+import {MatButtonModule} from "@angular/material/button";
 
 
 @NgModule({
@@ -18,7 +22,9 @@ import {MatRippleModule} from "@angular/material/core";
     AdminComponent,
     UserComponent,
     BookComponent,
-    PageComponent
+    PageComponent,
+    BookCreateComponent,
+    BookUpdateComponent
   ],
   imports: [
     CommonModule,
@@ -27,7 +33,9 @@ import {MatRippleModule} from "@angular/material/core";
     MatIconModule,
     MatMenuModule,
     MatGridListModule,
-    MatRippleModule
+    MatRippleModule,
+    MatTooltipModule,
+    MatButtonModule
   ]
 })
 export class AdminModule { }
