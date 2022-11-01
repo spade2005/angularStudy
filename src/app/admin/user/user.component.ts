@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-user',
@@ -7,9 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserComponent implements OnInit {
 
-  constructor() { }
+  user = {username: '', passwordHash: '', phone: '', email: '', nickName: ''};
+
+  constructor(public router: Router) {
+  }
 
   ngOnInit(): void {
   }
 
+  submit() {
+    console.log(this.user);
+    const redirectUrl = '/admin/book';
+    this.router.navigate([redirectUrl]);
+  }
 }

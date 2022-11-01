@@ -12,9 +12,14 @@ import {MatMenuModule} from "@angular/material/menu";
 import {MatGridListModule} from "@angular/material/grid-list";
 import {MatRippleModule} from "@angular/material/core";
 import { BookCreateComponent } from './book-create/book-create.component';
-import { BookUpdateComponent } from './book-update/book-update.component';
 import {MatTooltipModule} from "@angular/material/tooltip";
 import {MatButtonModule} from "@angular/material/button";
+import {MatFormFieldModule} from "@angular/material/form-field";
+import {FormsModule} from "@angular/forms";
+import {MatInputModule} from "@angular/material/input";
+import {MatSelectModule} from '@angular/material/select';
+import {MatCardModule} from "@angular/material/card";
+
 
 
 @NgModule({
@@ -23,8 +28,7 @@ import {MatButtonModule} from "@angular/material/button";
     UserComponent,
     BookComponent,
     PageComponent,
-    BookCreateComponent,
-    BookUpdateComponent
+    BookCreateComponent
   ],
   imports: [
     CommonModule,
@@ -35,7 +39,12 @@ import {MatButtonModule} from "@angular/material/button";
     MatGridListModule,
     MatRippleModule,
     MatTooltipModule,
-    MatButtonModule
+    MatButtonModule,
+    MatFormFieldModule,
+    FormsModule,
+    MatSelectModule,
+    MatInputModule,
+    MatCardModule
   ]
 })
 export class AdminModule { }

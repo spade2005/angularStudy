@@ -6,7 +6,6 @@ import {BookComponent} from "./book/book.component";
 import {PageComponent} from "./page/page.component";
 import {AuthGuard} from "../guard/auth.guard";
 import {BookCreateComponent} from "./book-create/book-create.component";
-import {BookUpdateComponent} from "./book-update/book-update.component";
 
 const routes: Routes = [
   {
@@ -21,7 +20,7 @@ const routes: Routes = [
           {path:'user',component:UserComponent},
           {path:'book',component:BookComponent},
           {path:'book-create',component:BookCreateComponent},
-          {path:'book-update',component:BookUpdateComponent},
+          {path:'book-create/:id',component:BookCreateComponent},
           {path:'page',component:PageComponent},
         ]
       }

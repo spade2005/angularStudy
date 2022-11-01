@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'app-book-create',
@@ -7,9 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BookCreateComponent implements OnInit {
 
-  constructor() { }
+  book = {id:0,name: '', mark: '', sort_by: 100, type: 1 | 2, visit_psss: ''};
 
-  ngOnInit(): void {
+  constructor(private route: ActivatedRoute,public router: Router,) {
   }
 
+  ngOnInit(): void {
+    this.book.id = Number(this.route.snapshot.paramMap.get('id'));
+  }
+
+  submit() {
+    console.log(this.book);
+    const redirectUrl = '/admin/book';
+    this.router.navigate([redirectUrl]);
+  }
 }

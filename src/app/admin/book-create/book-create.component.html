@@ -1,1 +1,51 @@
-<p>book-create works!</p>
+<div class="book-div">
+  <mat-card>
+    <mat-card-title>新建项目</mat-card-title>
+    <mat-card-subtitle>私有项目可以设置密码</mat-card-subtitle>
+    <mat-card-actions>
+      <p>
+        <mat-form-field appearance="fill">
+          <mat-label>name</mat-label>
+          <input matInput placeholder="Please enter name" required [(ngModel)]="book.name">
+        </mat-form-field>
+      </p>
+
+      <p>
+        <mat-form-field appearance="fill">
+          <mat-label>mark</mat-label>
+          <input matInput placeholder="Please enter mark" [(ngModel)]="book.mark">
+        </mat-form-field>
+      </p>
+
+      <p>
+        <mat-form-field appearance="fill">
+          <mat-label>排序</mat-label>
+          <input matInput type="number" placeholder="Please enter 排序" [(ngModel)]="book.sort_by">
+        </mat-form-field>
+      </p>
+
+      <p>
+        <mat-form-field appearance="fill">
+          <mat-label>类型</mat-label>
+          <mat-select required [(value)]="book.type">
+            <mat-option value="1">项目公开</mat-option>
+            <mat-option value="2">项目私有</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </p>
+
+      <p *ngIf="book.type==2">
+        <mat-form-field appearance="fill">
+          <mat-label>访问密码</mat-label>
+          <input matInput placeholder="Please enter 访问密码" [(ngModel)]="book.visit_psss">
+        </mat-form-field>
+      </p>
+
+      <p>
+        <button mat-raised-button type="button" (click)="submit()">submit</button>
+        &nbsp;
+        <a mat-raised-button type="button" routerLink="/admin/book">back</a>
+      </p>
+    </mat-card-actions>
+  </mat-card>
+</div>

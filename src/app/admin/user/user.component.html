@@ -1,1 +1,47 @@
-<p>user works!</p>
+<div class="user-div">
+  <mat-card>
+    <mat-card-title>个人资料</mat-card-title>
+    <mat-card-subtitle>密码不填写则不更新</mat-card-subtitle>
+    <mat-card-actions>
+      <p>
+        <mat-form-field appearance="fill">
+          <mat-label>username</mat-label>
+          <input matInput placeholder="Please enter name" required [(ngModel)]="user.username">
+        </mat-form-field>
+      </p>
+
+      <p>
+        <mat-form-field appearance="fill">
+          <mat-label>passwordHash</mat-label>
+          <input matInput placeholder="Please enter mark" type="password" [(ngModel)]="user.passwordHash">
+        </mat-form-field>
+      </p>
+
+      <p>
+        <mat-form-field appearance="fill">
+          <mat-label>phone</mat-label>
+          <input matInput placeholder="Please enter phone" [(ngModel)]="user.phone">
+        </mat-form-field>
+      </p>
+
+      <p>
+        <mat-form-field appearance="fill">
+          <mat-label>email</mat-label>
+          <input matInput type="email" placeholder="Please enter email" [(ngModel)]="user.email">
+        </mat-form-field>
+      </p>
+
+      <p>
+        <mat-form-field appearance="fill">
+          <mat-label>nickName</mat-label>
+          <input matInput placeholder="Please enter nickName"  [(ngModel)]="user.nickName">
+        </mat-form-field>
+      </p>
+      <p>
+        <button mat-raised-button type="button" (click)="submit()">submit</button>
+        &nbsp;
+        <a mat-raised-button type="button" routerLink="/admin/book">back</a>
+      </p>
+    </mat-card-actions>
+  </mat-card>
+</div>
