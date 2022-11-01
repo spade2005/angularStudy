@@ -1,1 +1,59 @@
-<p>page works!</p>
+<mat-drawer-container class="page-container" autosize>
+  <mat-drawer mode="side" opened class="page-side">
+    <div class="moni-div">
+      <button mat-button [matMenuTriggerFor]="menu"><mat-icon>add_circle</mat-icon></button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item matTooltip="create|update type" matTooltipPosition="right">
+          <mat-icon>folder</mat-icon>
+        </button>
+        <button mat-menu-item matTooltip="create page" matTooltipPosition="right">
+          <mat-icon>text_snippet</mat-icon>
+        </button>
+        <button mat-menu-item matTooltip="edit current page" matTooltipPosition="right">
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button mat-menu-item matTooltip="del current page" matTooltipPosition="right">
+          <mat-icon>delete</mat-icon>
+        </button>
+        <a mat-menu-item matTooltip="go back" routerLink="/admin/book" matTooltipPosition="right">
+          <mat-icon>keyboard_backspace</mat-icon>
+        </a>
+      </mat-menu>
+    </div>
+
+    <mat-tree [dataSource]="dataSource" [treeControl]="treeControl" class="example-tree">
+      <!-- This is the tree node template for leaf nodes -->
+      <!-- There is inline padding applied to this node using styles.
+        This padding value depends on the mat-icon-button width. -->
+      <mat-tree-node *matTreeNodeDef="let node" matTreeNodeToggle>
+        {{node.name}}
+      </mat-tree-node>
+      <!-- This is the tree node template for expandable nodes -->
+      <mat-nested-tree-node *matTreeNodeDef="let node; when: hasChild">
+        <div class="mat-tree-node">
+          <button mat-icon-button matTreeNodeToggle
+                  [attr.aria-label]="'Toggle ' + node.name">
+            <mat-icon class="mat-icon-rtl-mirror">
+              {{treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right'}}
+            </mat-icon>
+          </button>
+          {{node.name}}
+        </div>
+        <!-- There is inline padding applied to this div using styles.
+            This padding value depends on the mat-icon-button width.  -->
+        <div [class.example-tree-invisible]="!treeControl.isExpanded(node)"
+             role="group">
+          <ng-container matTreeNodeOutlet></ng-container>
+        </div>
+      </mat-nested-tree-node>
+    </mat-tree>
+
+  </mat-drawer>
+  <mat-drawer-content class="page-content">
+    <h2>Main content</h2>
+    <mat-divider></mat-divider>
+    <div>
+      ....
+    </div>
+  </mat-drawer-content>
+</mat-drawer-container>

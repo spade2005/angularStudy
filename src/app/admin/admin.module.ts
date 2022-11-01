@@ -19,6 +19,9 @@ import {FormsModule} from "@angular/forms";
 import {MatInputModule} from "@angular/material/input";
 import {MatSelectModule} from '@angular/material/select';
 import {MatCardModule} from "@angular/material/card";
+import {MatSidenavModule} from "@angular/material/sidenav";
+import {MatTreeModule} from "@angular/material/tree";
+import {MatDividerModule} from "@angular/material/divider";
 
 
 
@@ -44,7 +47,10 @@ import {MatCardModule} from "@angular/material/card";
     FormsModule,
     MatSelectModule,
     MatInputModule,
-    MatCardModule
+    MatCardModule,
+    MatSidenavModule,
+    MatTreeModule,
+    MatDividerModule
   ]
 })
 export class AdminModule { }
