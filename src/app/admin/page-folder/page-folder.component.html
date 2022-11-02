@@ -1,6 +1,10 @@
 <div class="page-div">
   <mat-card>
-    <mat-card-title>目录管理</mat-card-title>
+    <mat-card-title>
+      目录管理
+      <button mat-flat-button type="button" color="primary" (click)="openDialog()">create new</button>
+      <a mat-flat-button type="button"  routerLink="/admin/page">back</a>
+    </mat-card-title>
     <mat-card-subtitle>拖动排序，仅支持2级</mat-card-subtitle>
     <mat-card-actions>
 

@@ -47,16 +47,16 @@ export class PageFolderComponent implements OnInit {
 
   hasChild = (_: number, node: FoodNode) => !!node.children && node.children.length > 0;
 
-  folder = {name: '', mark: '', sort_by: 0, parent_id: 0, parent_list: []};
+  folder = {name: '', sort_by: 0, parent_id: 0, parent_list: []};
 
   openDialog(): void {
     const dialogRef = this.dialog.open(PageFolderCreateComponent, {
-      width: '250px',
+      width: '400px',
       data: this.folder,
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed',result);
+      console.log('The dialog was closed', result);
       // this.folder = result;
     });
   }

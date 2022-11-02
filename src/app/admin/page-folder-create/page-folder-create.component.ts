@@ -9,7 +9,7 @@ import {MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 export class PageFolderCreateComponent implements OnInit {
 
   constructor(public dialogRef: MatDialogRef<PageFolderCreateComponent>,
-              @Inject(MAT_DIALOG_DATA) public data: { name: "", mark: "", sort_by: 0 },) {
+              @Inject(MAT_DIALOG_DATA) public data: { name: "", sort_by: 0, parent_id: 0, parent_list: [] },) {
   }
 
   ngOnInit(): void {
