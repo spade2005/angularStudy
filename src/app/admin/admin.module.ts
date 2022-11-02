@@ -22,6 +22,8 @@ import {MatCardModule} from "@angular/material/card";
 import {MatSidenavModule} from "@angular/material/sidenav";
 import {MatTreeModule} from "@angular/material/tree";
 import {MatDividerModule} from "@angular/material/divider";
+import { PageCreateComponent } from './page-create/page-create.component';
+import { PageFolderComponent } from './page-folder/page-folder.component';
 
 
 
@@ -31,7 +33,9 @@ import {MatDividerModule} from "@angular/material/divider";
     UserComponent,
     BookComponent,
     PageComponent,
-    BookCreateComponent
+    BookCreateComponent,
+    PageCreateComponent,
+    PageFolderComponent
   ],
   imports: [
     CommonModule,

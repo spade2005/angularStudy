@@ -1,0 +1,19 @@
+.example-spacer {
+  flex: 1 1 auto;
+}
+.page-div {
+  width: 90%;
+  margin: 2rem auto 0;
+}
+.mat-toolbar{
+  font-size: 16px;
+}
+.mat-form-field{
+  margin-top: 1rem;
+}
+.example-full-width{
+  width: 100%;
+}
+.text-edit{
+  height: 30rem;
+}

@@ -6,6 +6,8 @@ import {BookComponent} from "./book/book.component";
 import {PageComponent} from "./page/page.component";
 import {AuthGuard} from "../guard/auth.guard";
 import {BookCreateComponent} from "./book-create/book-create.component";
+import {PageCreateComponent} from "./page-create/page-create.component";
+import {PageFolderComponent} from "./page-folder/page-folder.component";
 
 const routes: Routes = [
   {
@@ -22,6 +24,8 @@ const routes: Routes = [
           {path:'book-create',component:BookCreateComponent},
           {path:'book-create/:id',component:BookCreateComponent},
           {path:'page',component:PageComponent},
+          {path:'page-create',component:PageCreateComponent},
+          {path:'page-folder',component:PageFolderComponent},
         ]
       }
     ]

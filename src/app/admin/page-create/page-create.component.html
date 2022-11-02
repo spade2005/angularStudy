@@ -1,0 +1,31 @@
+<div class="page-div">
+  <div class="page-tool">
+    <mat-toolbar>
+      <mat-form-field appearance="legacy">
+        <mat-label>标题</mat-label>
+        <input matInput placeholder="Please enter name" required [(ngModel)]="page.title">
+      </mat-form-field>
+      &nbsp;&nbsp;&nbsp;
+      <mat-form-field appearance="legacy">
+        <mat-label>目录</mat-label>
+        <mat-select required [(value)]="page.type">
+          <mat-option value="1">xxx</mat-option>
+          <mat-option value="2">xxx/xxxx</mat-option>
+          <mat-option value="3">xxx2</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <span class="example-spacer"></span>
+      <button mat-raised-button type="button" color="primary" (click)="submit()">save</button>
+      &nbsp;
+      <a mat-raised-button type="button" routerLink="/admin/page">back</a>
+    </mat-toolbar>
+
+
+  </div>
+  <div class="page-edit">
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Please enjoy your writing</mat-label>
+      <textarea class="text-edit" matInput placeholder="Ex. It makes me feel..."></textarea>
+    </mat-form-field>
+  </div>
+</div>
