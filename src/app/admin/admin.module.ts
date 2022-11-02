@@ -24,6 +24,9 @@ import {MatTreeModule} from "@angular/material/tree";
 import {MatDividerModule} from "@angular/material/divider";
 import { PageCreateComponent } from './page-create/page-create.component';
 import { PageFolderComponent } from './page-folder/page-folder.component';
+import {CdkTreeModule} from "@angular/cdk/tree";
+import { PageFolderCreateComponent } from './page-folder-create/page-folder-create.component';
+import {MatDialogModule} from "@angular/material/dialog";
 
 
 
@@ -35,7 +38,8 @@ import { PageFolderComponent } from './page-folder/page-folder.component';
     PageComponent,
     BookCreateComponent,
     PageCreateComponent,
-    PageFolderComponent
+    PageFolderComponent,
+    PageFolderCreateComponent
   ],
   imports: [
     CommonModule,
@@ -54,7 +58,9 @@ import { PageFolderComponent } from './page-folder/page-folder.component';
     MatCardModule,
     MatSidenavModule,
     MatTreeModule,
-    MatDividerModule
+    MatDividerModule,
+    CdkTreeModule,
+    MatDialogModule
   ]
 })
 export class AdminModule { }
