@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import {Component, OnInit} from '@angular/core';
+import {Router} from '@angular/router';
 import {AuthService} from "../../guard/auth.service";
 
 @Component({
@@ -9,7 +9,7 @@ import {AuthService} from "../../guard/auth.service";
 })
 export class LoginComponent implements OnInit {
 
-  user = {username: '', password: ''};
+  user = {username: 'test1', password: 'test1'};
   message: string;
 
   constructor(public authService: AuthService, public router: Router) {
@@ -21,22 +21,29 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.authService.autoLogin();
+    this.goHome();
   }
 
   login() {
     this.message = 'Trying to log in ...';
 
-    this.authService.login().subscribe(() => {
-      this.message = this.getMessage();
-      if (this.authService.isLoggedIn) {
-        // Usually you would use the redirect URL from the auth service.
-        // However to keep the example simple, we will always redirect to `/admin`.
-        const redirectUrl = '/admin';
-
-        // Redirect the user
-        this.router.navigate([redirectUrl]);
+    this.authService.login(this.user).subscribe((res) => {
+      if (res.data?.token) {
+        this.message = "login success";
+        this.authService.loginAfter(res);
+      } else {
+        this.message = "login error:" + res.message;
       }
+      this.goHome();
     });
+  }
+
+  goHome() {
+    if (this.authService.isLoggedIn) {
+      const redirectUrl = '/admin';
+      this.router.navigate([redirectUrl]);
+    }
   }
 
   logout() {

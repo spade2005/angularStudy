@@ -37,5 +37,8 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 - ng generate module admin --routing (admin module )
 - create guard (路由守卫)
 - ng generate guard your-guard
+- create http interceptor .拦截器。
+- ng generate interceptor [name]
+
 
 
