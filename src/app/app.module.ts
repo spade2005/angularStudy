@@ -15,6 +15,8 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatButtonModule} from '@angular/material/button';
 import {MatInputModule} from '@angular/material/input';
 
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import {CommonInterceptor} from "./http/common.interceptor";
 
 
 
@@ -36,7 +38,9 @@ import {MatInputModule} from '@angular/material/input';
     AdminModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: CommonInterceptor, multi: true },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

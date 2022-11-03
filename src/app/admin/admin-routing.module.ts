@@ -23,7 +23,7 @@ const routes: Routes = [
           {path:'book',component:BookComponent},
           {path:'book-create',component:BookCreateComponent},
           {path:'book-create/:id',component:BookCreateComponent},
-          {path:'page',component:PageComponent},
+          {path:'page/:id',component:PageComponent},
           {path:'page-create',component:PageCreateComponent},
           {path:'page-folder',component:PageFolderComponent},
         ]

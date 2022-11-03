@@ -1,29 +1,31 @@
 <div class="book-div">
 
   <mat-grid-list cols="4" rowHeight="100px">
-    <mat-grid-tile [colspan]="1" [rowspan]="1">
-      <div class="book-box">
-        <span [matMenuTriggerFor]="menu">first book</span>
-        <mat-menu #menu="matMenu" yPosition="below">
-          <ng-template matMenuContent>
-            <a mat-menu-item routerLink="/admin/page"  matTooltip="into page" matTooltipPosition="right">
-              <mat-icon>read_more</mat-icon>
-            </a>
-            <a mat-menu-item routerLink="/admin/book-create/1" matTooltip="edit book" matTooltipPosition="right">
-              <mat-icon>edit</mat-icon>
-            </a>
-            <button mat-menu-item  matTooltip="delete book" matTooltipPosition="right">
-              <mat-icon>delete</mat-icon>
-            </button>
-          </ng-template>
-        </mat-menu>
+    <mat-grid-tile [colspan]="1" [rowspan]="1" *ngFor="let item of bookList">
+
+      <div class="book-box" >
+        <span [matMenuTriggerFor]="menu" [matMenuTriggerData]="item">{{item.name}}</span>
       </div>
     </mat-grid-tile>
+
     <mat-grid-tile [colspan]="1" [rowspan]="1">
-      <a class="book-box" routerLink="/admin/book-create" >
+      <a class="book-box" routerLink="/admin/book-create">
         新建项目+
       </a>
     </mat-grid-tile>
+    <mat-menu #menu="matMenu" yPosition="below">
+      <ng-template matMenuContent let-id="id">
+        <a mat-menu-item routerLink="/admin/page/{{id}}" matTooltip="into page" matTooltipPosition="right">
+          <mat-icon>read_more</mat-icon>
+        </a>
+        <a mat-menu-item routerLink="/admin/book-create/{{id}}" matTooltip="edit book" matTooltipPosition="right">
+          <mat-icon>edit</mat-icon>
+        </a>
+        <button mat-menu-item matTooltip="delete book" (click)="delBook(id)" matTooltipPosition="right">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </ng-template>
+    </mat-menu>
   </mat-grid-list>
 
 </div>

@@ -23,9 +23,17 @@ export class CommonService {
     this.config[key] = val
   }
 
+  /*
+    get(url: string, data?: any): Observable<Response> {
+      url = this.host + url;
+      return this.http.get<Response>(url, {params: new HttpParams({fromObject: data})}).pipe(
+        catchError(this.handleError<Response>("get:" + url))
+      );
+    }
+    */
   get(url: string, data?: any): Observable<Response> {
     url = this.host + url;
-    return this.http.get<Response>(url, {params: new HttpParams({fromObject: data})}).pipe(
+    return this.http.get<Response>(url, {params: data}).pipe(
       catchError(this.handleError<Response>("get:" + url))
     );
   }
