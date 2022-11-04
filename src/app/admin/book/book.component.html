@@ -14,14 +14,14 @@
       </a>
     </mat-grid-tile>
     <mat-menu #menu="matMenu" yPosition="below">
-      <ng-template matMenuContent let-id="id">
+      <ng-template matMenuContent let-id="id" let-name="name">
         <a mat-menu-item routerLink="/admin/page/{{id}}" matTooltip="into page" matTooltipPosition="right">
           <mat-icon>read_more</mat-icon>
         </a>
         <a mat-menu-item routerLink="/admin/book-create/{{id}}" matTooltip="edit book" matTooltipPosition="right">
           <mat-icon>edit</mat-icon>
         </a>
-        <button mat-menu-item matTooltip="delete book" (click)="delBook(id)" matTooltipPosition="right">
+        <button mat-menu-item matTooltip="delete book" (click)="delBook(id,name)" matTooltipPosition="right">
           <mat-icon>delete</mat-icon>
         </button>
       </ng-template>

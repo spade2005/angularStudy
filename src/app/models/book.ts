@@ -3,5 +3,6 @@ export interface Book {
   name: string;
   mark: string;
   sortBy: number;
-  type: number;
+  type: string;
+  visitPass: string;
 }

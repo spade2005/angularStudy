@@ -33,7 +33,17 @@ export class CommonService {
     */
   get(url: string, data?: any): Observable<Response> {
     url = this.host + url;
-    return this.http.get<Response>(url, {params: data}).pipe(
+    let str = this.formatParams(data);
+    /*
+    console.log(p, "post 2 data");
+    console.log(new HttpParams({fromObject: data}), "post 3 data");
+    return of({
+      code: 1,
+      message: 'fuck',
+      data: null
+    });
+    */
+    return this.http.get<Response>(url, {params: new HttpParams({fromString: str})}).pipe(
       catchError(this.handleError<Response>("get:" + url))
     );
   }
@@ -43,6 +53,27 @@ export class CommonService {
     return this.http.post<Response>(url, data).pipe(
       catchError(this.handleError<Response>("post:" + url))
     );
+  }
+
+  formatParams(data: any): string {
+    let str = '';
+    if (!data) {
+      return str;
+    }
+    for (let k in data) {
+      // console.log(k, data[k], typeof data[k], "--");
+      if (typeof data[k] != 'object') {
+        str += k + "=" + data[k];
+        str += '&';
+      } else {
+        for (let kk in data[k]) {
+          // console.log(kk, data[k][kk], typeof data[k][kk], "--2");
+          str += k + '[' + kk + ']=' + data[k][kk];
+          str += '&';
+        }
+      }
+    }
+    return str.substring(0, str.length - 1);
   }
 
   private handleError<T>(operation = 'operation', result?: T) {

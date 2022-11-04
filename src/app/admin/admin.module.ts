@@ -27,6 +27,7 @@ import { PageFolderComponent } from './page-folder/page-folder.component';
 import {CdkTreeModule} from "@angular/cdk/tree";
 import { PageFolderCreateComponent } from './page-folder-create/page-folder-create.component';
 import {MatDialogModule} from "@angular/material/dialog";
+import { DeleteDialogComponent } from './delete-dialog/delete-dialog.component';
 
 
 
@@ -39,7 +40,8 @@ import {MatDialogModule} from "@angular/material/dialog";
     BookCreateComponent,
     PageCreateComponent,
     PageFolderComponent,
-    PageFolderCreateComponent
+    PageFolderCreateComponent,
+    DeleteDialogComponent
   ],
   imports: [
     CommonModule,

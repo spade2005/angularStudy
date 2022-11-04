@@ -1,6 +1,7 @@
 <div class="book-div">
   <mat-card>
-    <mat-card-title>新建项目</mat-card-title>
+    <mat-card-title *ngIf="book.id==0">新建项目</mat-card-title>
+    <mat-card-title *ngIf="book.id>0">更新项目</mat-card-title>
     <mat-card-subtitle>私有项目可以设置密码</mat-card-subtitle>
     <mat-card-actions>
       <p>
@@ -20,7 +21,7 @@
       <p>
         <mat-form-field appearance="fill">
           <mat-label>排序</mat-label>
-          <input matInput type="number" placeholder="Please enter 排序" [(ngModel)]="book.sort_by">
+          <input matInput type="number" placeholder="Please enter 排序" [(ngModel)]="book.sortBy">
         </mat-form-field>
       </p>
 
@@ -34,10 +35,10 @@
         </mat-form-field>
       </p>
 
-      <p *ngIf="book.type==2">
+      <p *ngIf="book.type=='2'">
         <mat-form-field appearance="fill">
           <mat-label>访问密码</mat-label>
-          <input matInput placeholder="Please enter 访问密码" [(ngModel)]="book.visit_psss">
+          <input matInput placeholder="Please enter 访问密码" [(ngModel)]="book.visitPass">
         </mat-form-field>
       </p>
 

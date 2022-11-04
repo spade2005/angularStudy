@@ -22,9 +22,9 @@ export class CommonInterceptor implements HttpInterceptor {
         Authorization: 'Bearer ' + this.commonService.getConfig('token')
       }
     });//这里可以在请求中加参数
-    return next.handle(req).pipe(tap(r => {
-      console.log(`tag message`)
-      console.log(r)
+    return next.handle(req).pipe(tap(() => {
+      // console.log(`tag message`,r)
+      // console.log(r)
     }),);
   }
 }
