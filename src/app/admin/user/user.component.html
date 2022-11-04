@@ -6,14 +6,14 @@
       <p>
         <mat-form-field appearance="fill">
           <mat-label>username</mat-label>
-          <input matInput placeholder="Please enter name" required [(ngModel)]="user.username">
+          <input matInput placeholder="Please enter name" readonly [value]="user.username">
         </mat-form-field>
       </p>
 
       <p>
         <mat-form-field appearance="fill">
           <mat-label>passwordHash</mat-label>
-          <input matInput placeholder="Please enter mark" type="password" [(ngModel)]="user.passwordHash">
+          <input matInput placeholder="Please enter password" type="password" [(ngModel)]="user.passwordHash">
         </mat-form-field>
       </p>
 

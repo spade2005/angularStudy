@@ -22,4 +22,16 @@ export class UserService {
   register(user: any): Observable<Response> {
     return this.http.post('/auth/register', user)
   }
+
+
+  info(): Observable<Response> {
+    return this.http.get('/user/info')
+  }
+
+
+  save(user: any): Observable<Response> {
+    return this.http.post('/user/save', user)
+  }
+
+
 }
