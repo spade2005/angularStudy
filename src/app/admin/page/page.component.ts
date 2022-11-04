@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {MatTreeNestedDataSource} from '@angular/material/tree';
 import {NestedTreeControl} from '@angular/cdk/tree';
+import {ActivatedRoute, Router} from "@angular/router";
 
 interface FoodNode {
   name: string;
@@ -37,12 +38,15 @@ const TREE_DATA: FoodNode[] = [
 export class PageComponent implements OnInit {
   treeControl = new NestedTreeControl<FoodNode>(node => node.children);
   dataSource = new MatTreeNestedDataSource<FoodNode>();
+  bookId: number = 0;
 
-  constructor() {
+  constructor(private route: ActivatedRoute, public router: Router,) {
     this.dataSource.data = TREE_DATA;
+
   }
 
   ngOnInit(): void {
+    this.bookId = Number(this.route.snapshot.paramMap.get('id'));
   }
 
   hasChild = (_: number, node: FoodNode) => !!node.children && node.children.length > 0;

@@ -3,10 +3,10 @@
     <div class="moni-div">
       <button mat-button [matMenuTriggerFor]="menu"><mat-icon>add_circle</mat-icon></button>
       <mat-menu #menu="matMenu">
-        <a mat-menu-item matTooltip="create|update type" routerLink="/admin/page-folder" matTooltipPosition="right">
+        <a mat-menu-item matTooltip="create|update type" routerLink="/admin/page-folder/{{bookId}}" matTooltipPosition="right">
           <mat-icon>folder</mat-icon>
         </a>
-        <button mat-menu-item matTooltip="create page" routerLink="/admin/page-create" matTooltipPosition="right">
+        <button mat-menu-item matTooltip="create page" routerLink="/admin/page-create/{{bookId}}" matTooltipPosition="right">
           <mat-icon>text_snippet</mat-icon>
         </button>
         <button mat-menu-item matTooltip="edit current page" matTooltipPosition="right">
