@@ -13,6 +13,7 @@ interface FoodNode {
   children?: FoodNode[];
 }
 */
+
 /*
 const TREE_DATA: PageFolder[] = [
   {
@@ -64,8 +65,6 @@ export class PageFolderComponent implements OnInit {
       this.folder.parentId = 0;
       node = this.folder;
     }
-    console.log("new node", node);
-    console.log("new node2", this.folder);
     const dialogRef = this.dialog.open(PageFolderCreateComponent, {
       width: '400px',
       data: {node: node, list: this.data},
@@ -114,6 +113,9 @@ export class PageFolderComponent implements OnInit {
   }
 
   fetchList() {
+    if (this.bookId <= 0) {
+      return;
+    }
     this.pagefolderservice.itemType(this.bookId).subscribe((res) => {
       console.log(res);
       if (!res || res.code > 0) {

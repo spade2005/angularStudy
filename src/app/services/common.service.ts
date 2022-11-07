@@ -1,7 +1,8 @@
 import {Injectable} from '@angular/core';
-import {HttpClient, HttpParams} from "@angular/common/http";
+import {HttpClient, HttpParams,HttpErrorResponse} from "@angular/common/http";
 import {catchError, Observable, of} from "rxjs";
 import {Response} from "../models/response";
+import {Router} from "@angular/router";
 
 
 @Injectable({
@@ -12,7 +13,7 @@ export class CommonService {
   host: string = "http://localhost:8080";
   config: any = {}
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, public router: Router) {
   }
 
   getConfig(key: string): any {
@@ -77,7 +78,7 @@ export class CommonService {
   }
 
   private handleError<T>(operation = 'operation', result?: T) {
-    return (error: any): Observable<T> => {
+    return (error: HttpErrorResponse): Observable<T> => {
 
       /*
       let d = this.dialog.open(CommonDialogComponent, {"width": "500px", "height": "180px", data: {"content": error}});
@@ -87,8 +88,11 @@ export class CommonService {
        */
 
       // TODO: send the error to remote logging infrastructure
-      console.log(operation)
-      console.error(error); // log to console instead
+      console.log("clog",operation)
+      console.error("clog",error); // log to console instead
+      if(error.status==401){
+        this.router.navigate(['/logout']);
+      }
       // Let the app keep running by returning an empty result.
       return of(result as T);
     };
