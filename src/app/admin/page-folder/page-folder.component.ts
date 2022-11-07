@@ -7,13 +7,13 @@ import {PageFolderService} from "../../services/page-folder.service";
 import {ActivatedRoute} from "@angular/router";
 import {PageFolder} from "../../models/page-folder";
 
-
+/*
 interface FoodNode {
   name: string;
   children?: FoodNode[];
 }
-
-// @ts-ignore
+*/
+/*
 const TREE_DATA: PageFolder[] = [
   {
     id: 0, mark: '', sortBy: 0, parentId: 0, bookId: 0,
@@ -24,22 +24,8 @@ const TREE_DATA: PageFolder[] = [
       {id: 0, name: 'Fruit loops', mark: '', sortBy: 0, parentId: 0, bookId: 0}
     ],
   },
-  /*
-  {
-    name: 'Vegetables',
-    children: [
-      {
-        name: 'Green',
-        children: [{name: 'Broccoli'}, {name: 'Brussels sprouts'}],
-      },
-      {
-        name: 'Orange',
-        children: [{name: 'Pumpkins'}, {name: 'Carrots'}],
-      },
-    ],
-  },*/
 ];
-
+*/
 @Component({
   selector: 'app-page-folder',
   templateUrl: './page-folder.component.html',
@@ -55,39 +41,115 @@ export class PageFolderComponent implements OnInit {
     this.fetchList();
   }
 
-  treeControl = new NestedTreeControl<PageFolder>(node => node.children);
-  dataSource = new ArrayDataSource(TREE_DATA);
 
+  treeControl = new NestedTreeControl<PageFolder>(node => node.children);
+  data: any;
+  dataSource: any;
   hasChild = (_: number, node: PageFolder) => !!node.children && node.children.length > 0;
 
   bookId: number = 0;
-  folder = {name: '', sort_by: 0, parent_id: 0, parent_list: [], bookId: this.bookId};
+  folder: PageFolder = {
+    bookId: this.bookId,
+    id: 0,
+    mark: "",
+    name: "",
+    parentId: 0,
+    children: [],
+    sortBy: 100
+  };
 
-  openDialog(): void {
+  openDialog(node: PageFolder | null): void {
+    if (node == null) {
+      this.folder.name = "";
+      this.folder.parentId = 0;
+      node = this.folder;
+    }
+    console.log("new node", node);
+    console.log("new node2", this.folder);
     const dialogRef = this.dialog.open(PageFolderCreateComponent, {
       width: '400px',
-      data: this.folder,
+      data: {node: node, list: this.data},
     });
 
     dialogRef.afterClosed().subscribe(result => {
+      if (!result) {
+        return;
+      }
       console.log('The dialog was closed', result);
+      this.saveFolder(result);
       // this.folder = result;
     });
   }
 
+  saveFolder(result: PageFolder) {
+    if (result.name == "") {
+      return;
+    }
+    console.log("start update", result.id, "===start end")
+    let data = result;
+    delete data.children;
+    data.bookId = this.bookId;
+    if (result.id > 0) {
+      //update
+      this.pagefolderservice.update(data).subscribe((res) => {
+        console.log(res);
+        if (!res || res.code > 0) {
+          console.log("update book error:", res);
+          return;
+        }
+        this.fetchList();
+      })
+    } else {
+      //create
+      this.pagefolderservice.create(data).subscribe((res) => {
+        console.log(res);
+        if (!res || res.code > 0) {
+          console.log("create book error:", res);
+          return;
+        }
+        this.fetchList();
+      })
+
+    }
+  }
+
   fetchList() {
-    this.pagefolderservice.itemType(this.folder.bookId).subscribe((res) => {
+    this.pagefolderservice.itemType(this.bookId).subscribe((res) => {
       console.log(res);
-      if (res?.code > 0) {
+      if (!res || res.code > 0) {
         console.log("fetch book error:", res);
-      } else {
-        this.formatTree(res.data.item, res.data.child)
+        return;
       }
+      let data = this.formatTree(res.data.item, res.data.child);
+      this.data = data;
+      this.dataSource = new ArrayDataSource(data);
     })
   }
 
   formatTree(item: any, child: any) {
-    console.log(item,"item")
-    console.log(child,"child")
+    if (!item) {
+      return;
+    }
+    let cmap: any = {};
+    if (child) {
+      for (let c in child) {
+        let key = "c" + child[c]["parentId"];
+        if (!cmap[key]) {
+          cmap[key] = [];
+        }
+        cmap[key].push(child[c]);
+      }
+    }
+    for (let i in item) {
+      item[i]["children"] = [];
+      let key = "c" + item[i]["id"];
+      if (cmap[key]) {
+        item[i]["children"] = cmap[key];
+      }
+    }
+    console.log(item, "item")
+    // console.log(child, "child")
+    // console.log(cmap, "cmap")
+    return item;
   }
 }

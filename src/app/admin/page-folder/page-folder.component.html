@@ -2,8 +2,8 @@
   <mat-card>
     <mat-card-title>
       目录管理
-      <button mat-flat-button type="button" color="primary" (click)="openDialog()">create new</button>
-      <a mat-flat-button type="button"  routerLink="/admin/page">back</a>
+      <button mat-flat-button type="button" color="primary" (click)="openDialog(null)">create new</button>
+      <a mat-flat-button type="button" routerLink="/admin/page/{{bookId}}">back</a>
     </mat-card-title>
     <mat-card-subtitle>拖动排序，仅支持2级</mat-card-subtitle>
     <mat-card-actions>
@@ -13,7 +13,7 @@
         <cdk-nested-tree-node *cdkTreeNodeDef="let node" class="example-tree-node">
           <!-- use a disabled button to provide padding for tree leaf -->
           <button mat-icon-button disabled></button>
-          <button (click)="openDialog()">{{node.name}}</button>
+          <button (click)="openDialog(node)">{{node.name}}</button>
         </cdk-nested-tree-node>
         <!-- This is the tree node template for expandable nodes -->
         <cdk-nested-tree-node *cdkTreeNodeDef="let node; when: hasChild" class="example-tree-node">
@@ -22,7 +22,7 @@
               {{treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right'}}
             </mat-icon>
           </button>
-          <button (click)="openDialog()">{{node.name}}-2</button>
+          <button (click)="openDialog(node)">{{node.name}}</button>
           <div [class.example-tree-invisible]="!treeControl.isExpanded(node)">
             <ng-container cdkTreeNodeOutlet></ng-container>
           </div>

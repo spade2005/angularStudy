@@ -30,7 +30,7 @@ export class BookComponent implements OnInit {
   fetchList() {
     this.bookService.list(this.fetchParams).subscribe((res) => {
       console.log(res);
-      if (res?.code > 0) {
+      if (!res || res?.code > 0) {
         console.log("fetch book error:", res);
       } else {
         if (res.data.count > 0) {

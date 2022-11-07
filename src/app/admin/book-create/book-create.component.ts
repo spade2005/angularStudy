@@ -26,7 +26,7 @@ export class BookCreateComponent implements OnInit {
     console.log(this.book);
     if (this.book.id == 0) {
       this.bookService.create(this.book).subscribe((res) => {
-        if(res.code==0){
+        if(res && res.code==0){
           this.goHome();
         }
       })
@@ -34,7 +34,7 @@ export class BookCreateComponent implements OnInit {
     }
     if (this.book.id > 0) {
       this.bookService.update(this.book).subscribe((res) => {
-        if(res.code==0){
+        if(res && res.code==0){
           this.goHome();
         }
       })
@@ -54,7 +54,7 @@ export class BookCreateComponent implements OnInit {
     }
     this.bookService.one(this.book.id).subscribe((res) => {
       console.log(res);
-      if (res.code > 0) {
+      if (!res || res.code > 0) {
         return;
       }
       this.book = res.data.book;
