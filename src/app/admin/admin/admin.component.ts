@@ -8,10 +8,10 @@ import { Router } from '@angular/router';
 })
 export class AdminComponent implements OnInit {
 
-  constructor(public router: Router) { }
+  constructor(public router: Router,) { }
 
   ngOnInit(): void {
-    this.router.navigate(['/admin/book']);
+    // this.router.navigate(['/admin/book']);
   }
 
 

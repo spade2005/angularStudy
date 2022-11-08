@@ -5,6 +5,8 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {PageService} from "../../services/page.service";
 import {BookBar} from "../../models/book-bar";
 import {BookContent} from "../../models/book-content";
+import {DeleteDialogComponent} from "../delete-dialog/delete-dialog.component";
+import {MatDialog} from "@angular/material/dialog";
 
 /*
 interface FoodNode {
@@ -46,7 +48,8 @@ export class PageComponent implements OnInit {
   pageId: number = 0;
   page: BookContent = {id: 0, author: '', title: '', content: '', updateAt: 0};
 
-  constructor(private route: ActivatedRoute, public router: Router, private pageService: PageService) {
+  constructor(private route: ActivatedRoute, public router: Router
+    , private pageService: PageService, public dialog: MatDialog) {
     // this.dataSource.data = TREE_DATA;
     console.log("loading");
   }
@@ -181,4 +184,26 @@ export class PageComponent implements OnInit {
     return bookBar;
   }
 
+  delPage() {
+    console.log(this.page);
+    console.log(this.pageId, '===pageid');
+    const dialogRef = this.dialog.open(DeleteDialogComponent, {
+      width: '400px',
+      data: {name: this.page.title},
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed', result);
+      if (result) {
+        this.pageService.del({id: this.pageId}).subscribe((res) => {
+          console.log(res);
+          if (!res || res.code > 0) {
+            console.log("fetch book error:", res);
+          } else {
+            this.router.navigate(['/admin/page/' + this.bookId]);
+          }
+        });
+      }
+
+    });
+  }
 }

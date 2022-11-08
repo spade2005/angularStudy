@@ -14,7 +14,7 @@
         <a mat-menu-item matTooltip="edit current page" routerLink="/admin/page-create/{{bookId}}/{{page.id}}" matTooltipPosition="right" *ngIf="pageId>0 && page.id>0">
           <mat-icon>edit</mat-icon>
         </a>
-        <button mat-menu-item matTooltip="del current page" matTooltipPosition="right" *ngIf="pageId>0 && page.id>0">
+        <button (click)="delPage()" mat-menu-item matTooltip="del current page" matTooltipPosition="right" *ngIf="pageId>0 && page.id>0">
           <mat-icon>delete</mat-icon>
         </button>
         <a mat-menu-item matTooltip="go back" routerLink="/admin/book" matTooltipPosition="right">

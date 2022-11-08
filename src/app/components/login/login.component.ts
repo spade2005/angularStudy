@@ -41,7 +41,12 @@ export class LoginComponent implements OnInit {
 
   goHome() {
     if (this.authService.isLoggedIn) {
-      const redirectUrl = '/admin';
+      let redirectUrl = '/admin/book';
+      if (this.authService.redirectUrl) {
+        redirectUrl = this.authService.redirectUrl;
+        this.authService.redirectUrl = '';
+      }
+      console.log("go home go to xxx", redirectUrl);
       this.router.navigate([redirectUrl]);
     }
   }
