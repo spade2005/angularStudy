@@ -24,7 +24,9 @@ const routes: Routes = [
           {path:'book-create',component:BookCreateComponent},
           {path:'book-create/:id',component:BookCreateComponent},
           {path:'page/:id',component:PageComponent},
+          {path:'page/:id/:pid',component:PageComponent},
           {path:'page-create/:id',component:PageCreateComponent},
+          {path:'page-create/:id/:pid',component:PageCreateComponent},
           {path:'page-folder/:id',component:PageFolderComponent},
         ]
       }

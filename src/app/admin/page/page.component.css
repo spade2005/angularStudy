@@ -5,7 +5,10 @@
   border:1px solid #ece8e8;
 }
 .page-side{
-  padding-right: 1rem;
+  padding-right: 1.2rem;
+}
+.mat-tree-node, .mat-nested-tree-node{
+  font-size: 0.8rem;
 }
 .page-content{
   padding:2rem;
@@ -44,7 +47,29 @@
 }
 .page-content h2{
   text-align: center;
+  margin-bottom: 0.5rem;
+}
+.page-content .sub-title{
+  text-align: center;
+  padding-bottom: 0.5rem;
+  font-size: 0.9rem;
 }
 .mat-menu-item{
   text-align: center;
+}
+
+.article-link{
+  padding-right: 1rem;
+  text-decoration: none;
+  color: #000;
+}
+.article-link:hover{
+  background: #c8bfbf;
+}
+.page-side .mat-icon{
+  color:#203434;
+}
+
+.page-c-html{
+  padding:1rem;
 }

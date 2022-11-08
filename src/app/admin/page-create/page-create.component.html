@@ -8,16 +8,14 @@
       &nbsp;&nbsp;&nbsp;
       <mat-form-field appearance="legacy">
         <mat-label>目录</mat-label>
-        <mat-select required [(value)]="page.type">
-          <mat-option value="1">xxx</mat-option>
-          <mat-option value="2">xxx/xxxx</mat-option>
-          <mat-option value="3">xxx2</mat-option>
+        <mat-select required [(value)]="page.typeId">
+          <mat-option [value]="item.id" *ngFor="let item of pageTypes">{{item.name}}</mat-option>
         </mat-select>
       </mat-form-field>
       <span class="example-spacer"></span>
       <button mat-raised-button type="button" color="primary" (click)="submit()">save</button>
       &nbsp;
-      <a mat-raised-button type="button" routerLink="/admin/page">back</a>
+      <a mat-raised-button type="button" routerLink="/admin/page/{{bookId}}">back</a>
     </mat-toolbar>
 
 
@@ -25,7 +23,7 @@
   <div class="page-edit">
     <mat-form-field class="example-full-width" appearance="fill">
       <mat-label>Please enjoy your writing</mat-label>
-      <textarea class="text-edit" matInput placeholder="Ex. It makes me feel..."></textarea>
+      <textarea class="text-edit" matInput placeholder="Ex. It makes me feel..." [(ngModel)]="page.content"></textarea>
     </mat-form-field>
   </div>
 </div>
